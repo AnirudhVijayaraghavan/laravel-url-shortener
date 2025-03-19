@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Mail\NewUserEmail;
+use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 use Illuminate\Http\Request;
+use App\Jobs\SendNewUserEmail;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 
 class InitialController extends Controller
 {
@@ -52,8 +56,20 @@ class InitialController extends Controller
 
         );
         $user = User::create($incomingFields);
-        // auth()->login($user);
-        return redirect('/')->with('success', 'Thank you for creating an account.');
+        //auth()->login($user);
+        
+        dispatch(new SendNewUserEmail([
+            'name' => $user->username,
+            'email' => $user->email
+        ]));
+
+        // Commenting this out because we have are sending mail 
+        // through Job SendNewUserEmail, for async.
+        // Mail::to($user->email)->send(new NewUserEmail([
+        //     'name' => $user->username
+        // ]));
+        return redirect('/login')->with('success', 'Thank you for creating an account.');
+
     }
     public function showLogin()
     {

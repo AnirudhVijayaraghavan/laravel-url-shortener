@@ -2,9 +2,12 @@
     <!-- Recently Shortened URLs -->
     <div class="bg-white shadow rounded-lg p-6">
         <h2 class="text-2xl font-bold mb-4">Your Shortened URLs</h2>
+        <div class="mt-5">{{ $ownedShortenedURLs->links() }}</div>
         <div class="overflow-x-auto">
             @unless ($ownedShortenedURLs->isEmpty())
+            
                 @if (auth()->user()->isPremium)
+                    
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                             <tr>
@@ -34,13 +37,14 @@
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         {{ $osurls->clickCount === -1 ? 'Click Count Disabled' : $osurls->clickCount }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        {{ floor(\Carbon\Carbon::now()->diffInDays($osurls->expiration_date)) . ' Days'}}</td>
+                                        {{ floor(\Carbon\Carbon::now()->diffInDays($osurls->expiration_date)) . ' Days' }}
+                                    </td>
                                     {{-- <td class="px-6 py-4 whitespace-nowrap">0</td> --}}
                                 </tr>
                             @endforeach
                             <!-- Add more rows as needed -->
                         </tbody>
-                        <div class="mt-5">{{ $ownedShortenedURLs->links() }}</div>
+
                     </table>
                 @else
                     <table class="min-w-full divide-y divide-gray-200">
@@ -67,7 +71,7 @@
                             @endforeach
                             <!-- Add more rows as needed -->
                         </tbody>
-                        <div class="mt-4">{{ $ownedShortenedURLs->links() }}</div>
+
                     </table>
                 @endif
             @else

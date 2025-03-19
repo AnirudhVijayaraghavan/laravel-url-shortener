@@ -9,6 +9,7 @@
                         <form action="/subscribe" method="POST"
                             class="px-6 py-3 bg-green-500 text-white rounded hover:bg-green-600">
                             @csrf
+                            @method('PUT')
                             <button type="submit" class="">
                                 Subscribe
                             </button>
@@ -17,6 +18,7 @@
                         <form action="/unsubscribe" method="POST"
                             class="px-6 py-3 bg-red-500 text-white rounded hover:bg-red-600">
                             @csrf
+                            @method('PUT')
                             <button type="submit" class="">
                                 Unsubscribe
                             </button>

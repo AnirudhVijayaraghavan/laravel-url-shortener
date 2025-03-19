@@ -12,6 +12,10 @@
                     <br>
                     <a href="/homepage" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Visit your page</a>
 
+                    @if (auth()->user()->isAdmin === 1)
+                        <a href="{{ route('siteadmin') }}"
+                            class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Admin Panel</a>
+                    @endif
                 </div>
             @else
                 <!-- Left Column: Lorem Ipsum Text -->

@@ -2,17 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\GuestShortURLS;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Jobs\SendNewURLEmail;
 use App\Models\shortenedURLs;
+use App\Models\GuestShortURLS;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\View;
 
 class urlController extends Controller
 {
     //
-    public function redirectGuestShortURL($guestshortURL) {
+    public function search($term)
+    {
+        if (auth()->user()->isAdmin === 1) {
+            $adminurls = shortenedURLs::search($term)->get();
+            $adminurls->load('user:id,username,avatar');
+            return $adminurls;
+        }
+        $urls = shortenedURLs::search($term)->where("user_id", auth()->user()->id)->get();
+        $urls->load('user:id,username,avatar');
+        return $urls;
+
+    }
+    public function redirectGuestShortURL($guestshortURL)
+    {
         $existCheck = GuestShortURLS::where('shortURL', '=', 'g/' . $guestshortURL)->first();
 
         if ($existCheck) {
@@ -90,28 +104,62 @@ class urlController extends Controller
         $incomingFields['shortURL'] = $incomingFields['custom_alias'] ?? null ? 'a/' . $incomingFields['custom_alias'] : 'a/' . Str::random(9);
         $incomingFields['user_id'] = auth()->id();
 
-        $existCheckQuery = shortenedURLs::where('longURL', $incomingFields['longURL'])->first();
+        $newURL = new shortenedURLs;
+        $newURL->user_id = auth()->user()->id;
+        $enableClick = $incomingFields['enable_click_count'] ?? 0;
+        $newURL->clickCount = ($enableClick == 1) ? 0 : -1;
+        $newURL->label = $incomingFields['label'] ?? '[No Label]';
+        $newURL->expiration_date = $incomingFields['expiration_date'] ?? now()->addYear();
+
+
+        $existCheckQuery = shortenedURLs::where('longURL', $incomingFields['longURL'])
+            ->where('user_id', auth()->id())
+            ->first();
         if ($existCheckQuery) {
             $shortURLValue = $existCheckQuery->shortURL;
             return back()->with('displayDUP', 'A shortened version exists, please use: ' . '127.0.0.1:8000/' . $shortURLValue);
-        }
-        $existCheckQueryCustomAlias = shortenedURLs::where('shortURL', $incomingFields['shortURL'])->first();
-        if ($existCheckQueryCustomAlias) {
-            //$shortURLValue = $existCheckQuery->shortURL;
-            return back()->with('displayDUP', 'A shortened URL with that link already exists, please try another one.');
+        } else {
+            $newURL->longURL = $incomingFields['longURL'];
+            $existCheckShortURL = shortenedURLs::where("shortURL", "=", $incomingFields['shortURL'])->first();
+            if (
+                $existCheckShortURL &&
+                ($incomingFields['shortURL'] != 'a/' . $incomingFields['custom_alias'])
+            ) {
+                $incomingFields['shortURL'] .= Str::random(2);
+                $newURL->shortURL = $incomingFields['shortURL'];
+                $newURL->save();
+                dispatch(new SendNewURLEmail([
+                    'name' => auth()->user()->username,
+                    'email' => auth()->user()->email,
+                    'shortURL' => $newURL->shortURL,
+                    'longURL' => $newURL->longURL
+                ]));
+                return back()->with('displaySURL', '127.0.0.1:8000/' . $newURL->shortURL);
+            } else if (
+                $existCheckShortURL &&
+                ($incomingFields['shortURL'] == 'a/' . $incomingFields['custom_alias'])
+            ) {
+                return back()->with('displayDUP', 'A shortened URL with that link already exists, please try another one.');
+
+            } else {
+                $newURL->shortURL = $incomingFields['shortURL'];
+                $newURL->save();
+                dispatch(new SendNewURLEmail([
+                    'name' => auth()->user()->username,
+                    'email' => auth()->user()->email,
+                    'shortURL' => $newURL->shortURL,
+                    'longURL' => $newURL->longURL
+                ]));
+                return back()->with('displaySURL', '127.0.0.1:8000/' . $newURL->shortURL);
+            }
         }
 
-        $newURL = new shortenedURLs;
-        $newURL->user_id = auth()->user()->id;
-        $newURL->longURL = $incomingFields['longURL'];
-        $newURL->shortURL = $incomingFields['shortURL'];
-        $newURL->clickCount = $incomingFields['enable_click_count'] == 1 ? 0 : -1;
-        $newURL->label = $incomingFields['label'] ?? '[No Label]';
-        $newURL->expiration_date = $incomingFields['expiration_date'] ?? now()->addYear();
-        $newURL->save();
-
-        //$newPost = shortenedURLs::create($incomingFields)->with('success','You have shortened '.$incomingFields['longURL']);
-        return back()->with('displaySURL', '127.0.0.1:8000/' . $newURL->shortURL);
+        // The following was to check if custom alias exists. Handled it in if condition above.
+        // $existCheckQueryCustomAlias = shortenedURLs::where('shortURL', $incomingFields['shortURL'])->first();
+        // if ($existCheckQueryCustomAlias) {
+        //     //$shortURLValue = $existCheckQuery->shortURL;
+        //     return back()->with('displayDUP', 'A shortened URL with that link already exists, please try another one.');
+        // }
     }
     public function showHomePage()
     {

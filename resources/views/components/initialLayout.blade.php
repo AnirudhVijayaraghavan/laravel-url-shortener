@@ -15,6 +15,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>URL Shortener - Landing Page</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    @vite(['resources/css/app.css'])
+    @vite(['resources/js/app.js'])
 </head>
 
 <body class="flex flex-col min-h-screen bg-gray-100">
@@ -25,16 +27,22 @@
             @auth
                 <div class="flex items-center space-x-4">
                     @if (auth()->user()->isPremium)
-                    <a href="/premium"
-                        class="{{ Request::segment(1) == 'premium' ? 'invisible' : '' }} px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Premium</a>
+                        <a href="/premium"
+                            class="{{ Request::segment(1) == 'premium' ? 'invisible' : '' }} px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Premium</a>
+                        <livewire:search/>
+                        {{-- <a href="#" class=" text-black mr-2 header-search-icon" title="Search" data-toggle="tooltip"
+                            data-placement="bottom"><i class="fas fa-search text-3xl"></i></a> --}}
                     @else
-                    <a href="/premium"
-                        class="{{ Request::segment(1) == 'premium' ? 'invisible' : '' }} px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Premium</a>
+                        <a href="/premium"
+                            class="{{ Request::segment(1) == 'premium' ? 'invisible' : '' }} px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Premium</a>
                     @endif
+                    <a href="/profile/{{ auth()->user()->username }}"
+                        class="{{ Request::segment(1) == 'as' ? 'invisible' : '' }} px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600">Profile</a>
                     <form action="/logout" method="POST" class="d-inline">
                         @csrf
                         <button class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Logout</button>
                     </form>
+
                 </div>
             @else
                 <a href="/login"

@@ -3,10 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class shortenedURLs extends Model
 {
     //
+    use Searchable;
     protected $table = 'shortened_urls';
     protected $fillable = [
 
@@ -15,6 +17,7 @@ class shortenedURLs extends Model
         'shortURL'
     ];
 
+    
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
@@ -24,8 +27,8 @@ class shortenedURLs extends Model
     {
         return [
             'longURL' => $this->longURL,
-            'shortURL' => $this->shortURL
-
+            'shortURL' => $this->shortURL,
+            'label' => $this->label
         ];
     }
 }
