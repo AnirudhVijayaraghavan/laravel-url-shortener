@@ -23,13 +23,14 @@
     <!-- Navbar -->
     <header class="bg-white shadow">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a wire:navigate href="/" class="text-xl font-bold text-gray-800">URLShortener &copy; {{ date('Y') }}</a>
+            <a wire:navigate href="/" class="text-xl font-bold text-gray-800">URLShortener &copy;
+                {{ date('Y') }}</a>
             @auth
                 <div class="flex items-center space-x-4">
                     @if (auth()->user()->isPremium)
                         <a wire:navigate href="/premium"
                             class="{{ Request::segment(1) == 'premium' ? 'invisible' : '' }} px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Premium</a>
-                        <livewire:search/>
+                        <livewire:search />
                         {{-- <a href="#" class=" text-black mr-2 header-search-icon" title="Search" data-toggle="tooltip"
                             data-placement="bottom"><i class="fas fa-search text-3xl"></i></a> --}}
                     @else
@@ -66,7 +67,23 @@
             </div>
         </div>
     @endif
-
+    <div class="background" style="z-index: -1">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+     </div>
     {{ $slot }}
     <!-- Footer -->
     <footer class="bg-gray-800 text-white">
