@@ -7,7 +7,7 @@
             <p class="text-lg text-gray-600 mb-6">
                 The link you are trying to access is invalid or may have been removed.
             </p>
-            <a href="/" class="px-6 py-3 bg-blue-500 text-white rounded hover:bg-blue-600">
+            <a wire:navigate  href="/" class="px-6 py-3 bg-blue-500 text-white rounded hover:bg-blue-600">
                 Return Home
             </a>
         </div>

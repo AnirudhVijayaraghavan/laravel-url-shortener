@@ -1,88 +1,46 @@
 <x-initialLayout>
-    <!-- Main Content -->
-    <main
-        class="flex-grow container mx-auto px-4 py-10 bg-gradient-to-br from-gray-50 to-gray-100>
-        <div class="grid
-        grid-cols-1 lg:grid-cols-4 gap-6">
-        <!-- Dashboard Summary Cards -->
-        <div class="lg:col-span-1 space-y-4">
-            <div class="bg-white bg-opacity-80 shadow rounded-lg p-6">
-                <h2 class="text-lg font-bold text-gray-700">Total URLs</h2>
-                <p class="text-3xl font-bold text-gray-900">{{ $totalUrls ?? '0' }}</p>
+    <div class="flex min-h-screen bg-gray-100 font-sans">
+        <!-- Sidebar Navigation (Sticky) -->
+        <aside class="w-64 bg-white shadow-lg sticky top-0 h-screen overflow-y-">
+            <div class="p-6 border-b">
+                <h2 class="text-2xl font-bold text-gray-800">Admin Panel</h2>
             </div>
-            <div class="bg-white bg-opacity-80 shadow rounded-lg p-6">
-                <h2 class="text-lg font-bold text-gray-700">Total Clicks</h2>
-                <p class="text-3xl font-bold text-gray-900">{{ $totalClicks ?? '0' }}</p>
-            </div>
-            <div class="bg-white bg-opacity-80 shadow rounded-lg p-6">
-                <h2 class="text-lg font-bold text-gray-700">Active Users</h2>
-                <p class="text-3xl font-bold text-gray-900">{{ $activeUsers ?? '0' }}</p>
-            </div>
-        </div>
+            <nav class="mt-4">
+                <a wire:navigate href="/siteadmin" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 {{ Request::segment(2) == '' ? 'bg-gray-200' : '' }}">
+                    URL Management
+                </a>
+                <a wire:navigate href="/siteadmin/users" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 {{ Request::segment(2) == 'users' ? 'bg-gray-200' : '' }}">
+                    User Management
+                </a>
+                <a wire:navigate href="/homepage" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">
+                    Return to Homepage
+                </a>
+            </nav>
+        </aside>
+        @if (Request::segment(2) === 'users')
+            <div class="flex-grow p-6 overflow-y-auto">
+                <!-- Summary Stats -->
+                <livewire:summary-stats />
 
-        <!-- URL Records Table -->
-        <div class="lg:col-span-3 bg-white bg-opacity-80 p-6 rounded-lg shadow">
-            <div class="flex justify-between items-center mb-4">
-                <h2 class="text-2xl font-bold text-gray-800">URL Records</h2>
-                <div class="flex space-x-2">
-                    <input type="text" name="search" placeholder="Search URLs..."
-                        class="border px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-300">
-                    <button class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Search</button>
-                </div>
+                <!-- URL Records Table -->
+                <livewire:admin-users-table/>
+
             </div>
-            <div class="overflow-x-auto">
-                <table class="min-w-full divide-y divide-gray-200">
-                    <thead class="bg-gray-50">
-                        <tr>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                ID</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Original URL</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Short URL</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Clicks</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                User</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Expiration</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
-                        {{-- @foreach ($urlRecords as $record)
-              <tr>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $record->id }}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $record->longURL }}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm">
-                  <a href="{{ url($record->shortURL) }}" class="text-blue-500 hover:underline" target="_blank">
-                    {{ $record->shortURL }}
-                  </a>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $record->clickCount }}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $record->user->username ?? 'N/A' }}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $record->expiration_date }}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm">
-                  <div class="flex space-x-2">
-                    <a href="{{ route('admin.url.edit', $record->id) }}" class="text-blue-500 hover:text-blue-700">Edit</a>
-                    <form action="{{ route('admin.url.destroy', $record->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this URL?');">
-                      @csrf
-                      @method('DELETE')
-                      <button type="submit" class="text-red-500 hover:text-red-700">Delete</button>
-                    </form>
-                  </div>
-                </td>
-              </tr>
-              @endforeach --}}
-                    </tbody>
-                </table>
+        @else
+            <!-- Main Content (Scrollable) -->
+            <div class="flex-grow p-6 overflow-y-auto">
+                <!-- Summary Stats -->
+                <livewire:summary-stats />
+
+                <!-- URL Records Table -->
+                <livewire:admin-panel-u-r-l-table />
+
+                <br>
+
+                <!-- Guest Table -->
+                <livewire:admin-panel-guest-table />
             </div>
-            <!-- Pagination -->
-            {{-- <div class="mt-4">
-          {{ $urlRecords->links() }}
-        </div> --}}
-        </div>
-        </div>
-    </main>
+        @endif
+
+    </div>
 </x-initialLayout>

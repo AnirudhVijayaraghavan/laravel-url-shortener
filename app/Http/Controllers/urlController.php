@@ -49,18 +49,58 @@ class urlController extends Controller
         $existCheck = GuestShortURLS::where("longURL", "=", $incomingFields['original_url'])->first();
         if ($existCheck) {
             $shortURLValue = $existCheck->shortURL;
-            return back()->with('displayDUP', 'A shortened version exists, please use: ' . '127.0.0.1:8000/' . $shortURLValue);
+            return back()->with('displayDUP', 'A shortened version exists, please use: ' . 'shorty.anirudhvijay.xyz/' . $shortURLValue);
         } else {
             $existCheckShortURL = GuestShortURLS::where("shortURL", "=", $incomingFields['shortURL'])->first();
             if ($existCheckShortURL) {
                 $incomingFields['shortURL'] .= Str::random(1);
                 $newURL->shortURL = $incomingFields['shortURL'];
                 $newURL->save();
-                return back()->with('displaySURL', '127.0.0.1:8000/' . $newURL->shortURL);
+                return back()->with('displaySURL', 'shorty.anirudhvijay.xyz/' . $newURL->shortURL);
             } else {
                 $newURL->shortURL = $incomingFields['shortURL'];
                 $newURL->save();
-                return back()->with('displaySURL', '127.0.0.1:8000/' . $newURL->shortURL);
+                return back()->with('displaySURL', 'shorty.anirudhvijay.xyz/' . $newURL->shortURL);
+            }
+        }
+
+    }
+    public function shortenGuestURLAPI(Request $request)
+    {
+        $incomingFields = $request->validate([
+            'original_url' => ['required', 'url:http,https']
+        ]);
+        $incomingFields['longURL'] = strip_tags($incomingFields['original_url']);
+        $incomingFields['shortURL'] = 'g/' . Str::random(9);
+
+        $newURL = new GuestShortURLS();
+        $newURL->longURL = $incomingFields['longURL'];
+        $newURL->expiration_date = now()->addMonth();
+        //Checking if longURL exists, then checking if generated shortURL exists, if so, then randomizing again.
+        $existCheck = GuestShortURLS::where("longURL", "=", $incomingFields['original_url'])->first();
+        if ($existCheck) {
+            $shortURLValue = $existCheck->shortURL;
+            return response()->json([
+                'message' => 'A shortened version exists, please use: ' . 'shorty.anirudhvijay.xyz/' . $shortURLValue,
+                'data' => $shortURLValue, // optional data
+            ], 200);
+        } else {
+            $existCheckShortURL = GuestShortURLS::where("shortURL", "=", $incomingFields['shortURL'])->first();
+            if ($existCheckShortURL) {
+                $incomingFields['shortURL'] .= Str::random(1);
+                $newURL->shortURL = $incomingFields['shortURL'];
+                $newURL->save();
+                return response()->json([
+                    'message' => 'shorty.anirudhvijay.xyz/' . $newURL->shortURL,
+                    'data' => $newURL->shortURL, // optional data
+                ], 200);
+            } else {
+                $newURL->shortURL = $incomingFields['shortURL'];
+                $newURL->save();
+                return response()->json([
+                    'message' => 'shorty.anirudhvijay.xyz/' . $newURL->shortURL,
+                    'data' => $newURL->shortURL, // optional data
+                ], 200);
             }
         }
 
@@ -117,7 +157,7 @@ class urlController extends Controller
             ->first();
         if ($existCheckQuery) {
             $shortURLValue = $existCheckQuery->shortURL;
-            return back()->with('displayDUP', 'A shortened version exists, please use: ' . '127.0.0.1:8000/' . $shortURLValue);
+            return back()->with('displayDUP', 'A shortened version exists, please use: ' . 'shorty.anirudhvijay.xyz/' . $shortURLValue);
         } else {
             $newURL->longURL = $incomingFields['longURL'];
             $existCheckShortURL = shortenedURLs::where("shortURL", "=", $incomingFields['shortURL'])->first();
@@ -134,7 +174,7 @@ class urlController extends Controller
                     'shortURL' => $newURL->shortURL,
                     'longURL' => $newURL->longURL
                 ]));
-                return back()->with('displaySURL', '127.0.0.1:8000/' . $newURL->shortURL);
+                return back()->with('displaySURL', 'shorty.anirudhvijay.xyz/' . $newURL->shortURL);
             } else if (
                 $existCheckShortURL &&
                 ($incomingFields['shortURL'] == 'a/' . $incomingFields['custom_alias'])
@@ -150,7 +190,7 @@ class urlController extends Controller
                     'shortURL' => $newURL->shortURL,
                     'longURL' => $newURL->longURL
                 ]));
-                return back()->with('displaySURL', '127.0.0.1:8000/' . $newURL->shortURL);
+                return back()->with('displaySURL', 'shorty.anirudhvijay.xyz/' . $newURL->shortURL);
             }
         }
 

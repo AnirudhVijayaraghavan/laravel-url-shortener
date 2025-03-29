@@ -4,10 +4,11 @@
         <div class="flex flex-col items-center mb-8">
             <div class="flex items-center space-x-4">
                 <!-- Manage Avatar Button -->
-                <a href="/profile/{{ $userData->username }}/manage-avatar"
+                <a wire:navigate href="/profile/{{ $userData->username }}/manage-avatar"
                     class="flex items-center justify-center w-24 h-24 rounded-full bg-gray-200 hover:bg-gray-300 shadow-lg">
-                    
-                    <img class="flex items-center justify-center w-24 h-24 rounded-full" src="{{$userData->avatar}}" alt="">
+
+                    <img class="flex items-center justify-center w-24 h-24 rounded-full" src="{{ $userData->avatar }}"
+                        alt="">
                 </a>
                 <!-- Username Display -->
                 <h1 class="text-3xl font-bold text-gray-800">{{ $userData->username }}</h1>

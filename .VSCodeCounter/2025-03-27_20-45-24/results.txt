@@ -1,0 +1,169 @@
+Date : 2025-03-27 20:45:24
+Directory : u:\Projects\Laravel Projects\URLShortener
+Total : 101 files,  14633 codes, 1183 comments, 715 blanks, all 16531 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JSON       |          5 |     10,778 |          0 |          4 |     10,782 |
+| PHP        |         83 |      3,437 |      1,069 |        610 |      5,116 |
+| CSS        |          2 |        148 |          3 |         26 |        177 |
+| JavaScript |          5 |        133 |          8 |         25 |        166 |
+| Markdown   |          2 |         60 |          0 |         29 |         89 |
+| XML        |          1 |         31 |          2 |          1 |         34 |
+| Ignore     |          1 |         29 |          5 |          2 |         36 |
+| Docker     |          1 |         11 |         56 |         14 |         81 |
+| YAML       |          1 |          6 |         40 |          4 |         50 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                               | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                                  |        101 |     14,633 |      1,183 |        715 |     16,531 |
+| . (Files)                                                                                                                          |         11 |     10,914 |        103 |         56 |     11,073 |
+| app                                                                                                                                |         25 |        855 |        185 |        179 |      1,219 |
+| app\Helpers                                                                                                                        |          1 |         35 |         12 |          8 |         55 |
+| app\Http                                                                                                                           |          8 |        433 |         56 |         70 |        559 |
+| app\Http\Controllers                                                                                                               |          6 |        406 |         46 |         62 |        514 |
+| app\Http\Middleware                                                                                                                |          2 |         27 |         10 |          8 |         45 |
+| app\Jobs                                                                                                                           |          3 |         58 |         24 |         16 |         98 |
+| app\Livewire                                                                                                                       |          5 |         86 |          0 |         23 |        109 |
+| app\Mail                                                                                                                           |          3 |        108 |         45 |         25 |        178 |
+| app\Models                                                                                                                         |          3 |         72 |         19 |         22 |        113 |
+| app\Policies                                                                                                                       |          1 |         44 |         21 |         10 |         75 |
+| app\Providers                                                                                                                      |          1 |         19 |          8 |          5 |         32 |
+| bootstrap                                                                                                                          |          2 |         21 |          2 |          5 |         28 |
+| config                                                                                                                             |         12 |        548 |        746 |        228 |      1,522 |
+| database                                                                                                                           |         12 |        298 |         88 |         56 |        442 |
+| database\factories                                                                                                                 |          1 |         25 |         14 |          6 |         45 |
+| database\migrations                                                                                                                |         10 |        259 |         69 |         45 |        373 |
+| database\seeders                                                                                                                   |          1 |         14 |          5 |          5 |         24 |
+| public                                                                                                                             |          4 |         31 |          4 |          9 |         44 |
+| public (Files)                                                                                                                     |          1 |         10 |          4 |          7 |         21 |
+| public\build                                                                                                                       |          3 |         21 |          0 |          2 |         23 |
+| public\build (Files)                                                                                                               |          1 |         13 |          0 |          0 |         13 |
+| public\build\assets                                                                                                                |          2 |          8 |          0 |          2 |         10 |
+| resources                                                                                                                          |         29 |      1,841 |         11 |        148 |      2,000 |
+| resources\css                                                                                                                      |          1 |        147 |          3 |         25 |        175 |
+| resources\js                                                                                                                       |          3 |        114 |          8 |         22 |        144 |
+| resources\views                                                                                                                    |         25 |      1,580 |          0 |        101 |      1,681 |
+| resources\views (Files)                                                                                                            |         13 |        917 |          0 |         45 |        962 |
+| resources\views\components                                                                                                         |          3 |        197 |          0 |         20 |        217 |
+| resources\views\footerpages                                                                                                        |          4 |        148 |          0 |         18 |        166 |
+| resources\views\livewire                                                                                                           |          5 |        318 |          0 |         18 |        336 |
+| routes                                                                                                                             |          3 |         98 |         36 |         21 |        155 |
+| tests                                                                                                                              |          3 |         27 |          8 |         13 |         48 |
+| tests (Files)                                                                                                                      |          1 |          6 |          1 |          4 |         11 |
+| tests\Feature                                                                                                                      |          1 |         11 |          4 |          5 |         20 |
+| tests\Unit                                                                                                                         |          1 |         10 |          3 |          4 |         17 |
++------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                                                           | language   | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| u:\Projects\Laravel Projects\URLShortener\.dockerignore                                                                            | Ignore     |         29 |          5 |          2 |         36 |
+| u:\Projects\Laravel Projects\URLShortener\Dockerfile                                                                               | Docker     |         11 |         56 |         14 |         81 |
+| u:\Projects\Laravel Projects\URLShortener\README.Docker.md                                                                         | Markdown   |         15 |          0 |          7 |         22 |
+| u:\Projects\Laravel Projects\URLShortener\README.md                                                                                | Markdown   |         45 |          0 |         22 |         67 |
+| u:\Projects\Laravel Projects\URLShortener\app\Helpers\base62file.php                                                               | PHP        |         35 |         12 |          8 |         55 |
+| u:\Projects\Laravel Projects\URLShortener\app\Http\Controllers\AdminController.php                                                 | PHP        |         65 |          1 |          6 |         72 |
+| u:\Projects\Laravel Projects\URLShortener\app\Http\Controllers\Controller.php                                                      | PHP        |          5 |          1 |          3 |          9 |
+| u:\Projects\Laravel Projects\URLShortener\app\Http\Controllers\InitialController.php                                               | PHP        |         64 |          7 |         12 |         83 |
+| u:\Projects\Laravel Projects\URLShortener\app\Http\Controllers\PremiumController.php                                               | PHP        |         32 |          1 |          5 |         38 |
+| u:\Projects\Laravel Projects\URLShortener\app\Http\Controllers\ProfileController.php                                               | PHP        |         93 |         24 |         18 |        135 |
+| u:\Projects\Laravel Projects\URLShortener\app\Http\Controllers\urlController.php                                                   | PHP        |        147 |         12 |         18 |        177 |
+| u:\Projects\Laravel Projects\URLShortener\app\Http\Middleware\MustBeLoggedIn.php                                                   | PHP        |         15 |          5 |          4 |         24 |
+| u:\Projects\Laravel Projects\URLShortener\app\Http\Middleware\mustBeAdmin.php                                                      | PHP        |         12 |          5 |          4 |         21 |
+| u:\Projects\Laravel Projects\URLShortener\app\Jobs\SendDailyAdminEmail.php                                                         | PHP        |         14 |          8 |          6 |         28 |
+| u:\Projects\Laravel Projects\URLShortener\app\Jobs\SendNewURLEmail.php                                                             | PHP        |         23 |          8 |          5 |         36 |
+| u:\Projects\Laravel Projects\URLShortener\app\Jobs\SendNewUserEmail.php                                                            | PHP        |         21 |          8 |          5 |         34 |
+| u:\Projects\Laravel Projects\URLShortener\app\Livewire\AdminPanelGuestTable.php                                                    | PHP        |         14 |          0 |          5 |         19 |
+| u:\Projects\Laravel Projects\URLShortener\app\Livewire\AdminPanelURLTable.php                                                      | PHP        |         14 |          0 |          5 |         19 |
+| u:\Projects\Laravel Projects\URLShortener\app\Livewire\AdminUsersTable.php                                                         | PHP        |         14 |          0 |          5 |         19 |
+| u:\Projects\Laravel Projects\URLShortener\app\Livewire\Search.php                                                                  | PHP        |         26 |          0 |          4 |         30 |
+| u:\Projects\Laravel Projects\URLShortener\app\Livewire\SummaryStats.php                                                            | PHP        |         18 |          0 |          4 |         22 |
+| u:\Projects\Laravel Projects\URLShortener\app\Mail\DailyAdminEmail.php                                                             | PHP        |         40 |         15 |          8 |         63 |
+| u:\Projects\Laravel Projects\URLShortener\app\Mail\NewURLEmail.php                                                                 | PHP        |         36 |         15 |          8 |         59 |
+| u:\Projects\Laravel Projects\URLShortener\app\Mail\NewUserEmail.php                                                                | PHP        |         32 |         15 |          9 |         56 |
+| u:\Projects\Laravel Projects\URLShortener\app\Models\GuestShortURLS.php                                                            | PHP        |         11 |          1 |          5 |         17 |
+| u:\Projects\Laravel Projects\URLShortener\app\Models\User.php                                                                      | PHP        |         35 |         17 |          9 |         61 |
+| u:\Projects\Laravel Projects\URLShortener\app\Models\shortenedURLs.php                                                             | PHP        |         26 |          1 |          8 |         35 |
+| u:\Projects\Laravel Projects\URLShortener\app\Policies\UserPolicy.php                                                              | PHP        |         44 |         21 |         10 |         75 |
+| u:\Projects\Laravel Projects\URLShortener\app\Providers\AppServiceProvider.php                                                     | PHP        |         19 |          8 |          5 |         32 |
+| u:\Projects\Laravel Projects\URLShortener\bootstrap\app.php                                                                        | PHP        |         17 |          2 |          3 |         22 |
+| u:\Projects\Laravel Projects\URLShortener\bootstrap\providers.php                                                                  | PHP        |          4 |          0 |          2 |          6 |
+| u:\Projects\Laravel Projects\URLShortener\compose.yaml                                                                             | YAML       |          6 |         40 |          4 |         50 |
+| u:\Projects\Laravel Projects\URLShortener\composer.json                                                                            | JSON       |         76 |          0 |          1 |         77 |
+| u:\Projects\Laravel Projects\URLShortener\composer.lock                                                                            | JSON       |      8,502 |          0 |          1 |      8,503 |
+| u:\Projects\Laravel Projects\URLShortener\config\app.php                                                                           | PHP        |         22 |         82 |         23 |        127 |
+| u:\Projects\Laravel Projects\URLShortener\config\auth.php                                                                          | PHP        |         28 |         74 |         14 |        116 |
+| u:\Projects\Laravel Projects\URLShortener\config\cache.php                                                                         | PHP        |         57 |         34 |         18 |        109 |
+| u:\Projects\Laravel Projects\URLShortener\config\database.php                                                                      | PHP        |        109 |         43 |         23 |        175 |
+| u:\Projects\Laravel Projects\URLShortener\config\filesystems.php                                                                   | PHP        |         36 |         32 |         13 |         81 |
+| u:\Projects\Laravel Projects\URLShortener\config\logging.php                                                                       | PHP        |         79 |         33 |         21 |        133 |
+| u:\Projects\Laravel Projects\URLShortener\config\mail.php                                                                          | PHP        |         55 |         43 |         19 |        117 |
+| u:\Projects\Laravel Projects\URLShortener\config\queue.php                                                                         | PHP        |         52 |         44 |         17 |        113 |
+| u:\Projects\Laravel Projects\URLShortener\config\sanctum.php                                                                       | PHP        |         17 |         53 |         14 |         84 |
+| u:\Projects\Laravel Projects\URLShortener\config\scout.php                                                                         | PHP        |         50 |        137 |         23 |        210 |
+| u:\Projects\Laravel Projects\URLShortener\config\services.php                                                                      | PHP        |         20 |         11 |          8 |         39 |
+| u:\Projects\Laravel Projects\URLShortener\config\session.php                                                                       | PHP        |         23 |        160 |         35 |        218 |
+| u:\Projects\Laravel Projects\URLShortener\database\factories\UserFactory.php                                                       | PHP        |         25 |         14 |          6 |         45 |
+| u:\Projects\Laravel Projects\URLShortener\database\migrations\0001_01_01_000000_create_users_table.php                             | PHP        |         37 |          6 |          6 |         49 |
+| u:\Projects\Laravel Projects\URLShortener\database\migrations\0001_01_01_000001_create_cache_table.php                             | PHP        |         25 |          6 |          5 |         36 |
+| u:\Projects\Laravel Projects\URLShortener\database\migrations\0001_01_01_000002_create_jobs_table.php                              | PHP        |         46 |          6 |          6 |         58 |
+| u:\Projects\Laravel Projects\URLShortener\database\migrations\2025_03_05_032009_create_shortened_u_r_ls_table.php                  | PHP        |         20 |          6 |          4 |         30 |
+| u:\Projects\Laravel Projects\URLShortener\database\migrations\2025_03_09_052818_add_is__premium_to_users.php                       | PHP        |         21 |          8 |          4 |         33 |
+| u:\Projects\Laravel Projects\URLShortener\database\migrations\2025_03_09_173558_add_premium_features_to_urls.php                   | PHP        |         25 |          8 |          4 |         37 |
+| u:\Projects\Laravel Projects\URLShortener\database\migrations\2025_03_10_002623_create_guest_short_u_r_ls_table.php                | PHP        |         23 |          6 |          4 |         33 |
+| u:\Projects\Laravel Projects\URLShortener\database\migrations\2025_03_10_165923_remove_unique_constraint_from_shortened_u_r_ls.php | PHP        |         19 |          9 |          4 |         32 |
+| u:\Projects\Laravel Projects\URLShortener\database\migrations\2025_03_13_194813_add_avatar_to_users_table.php                      | PHP        |         19 |          8 |          4 |         31 |
+| u:\Projects\Laravel Projects\URLShortener\database\migrations\2025_03_27_213202_create_personal_access_tokens_table.php            | PHP        |         24 |          6 |          4 |         34 |
+| u:\Projects\Laravel Projects\URLShortener\database\seeders\DatabaseSeeder.php                                                      | PHP        |         14 |          5 |          5 |         24 |
+| u:\Projects\Laravel Projects\URLShortener\package-lock.json                                                                        | JSON       |      2,168 |          0 |          1 |      2,169 |
+| u:\Projects\Laravel Projects\URLShortener\package.json                                                                             | JSON       |         19 |          0 |          1 |         20 |
+| u:\Projects\Laravel Projects\URLShortener\phpunit.xml                                                                              | XML        |         31 |          2 |          1 |         34 |
+| u:\Projects\Laravel Projects\URLShortener\public\build\assets\app-C0GD_Dol.js                                                      | JavaScript |          7 |          0 |          1 |          8 |
+| u:\Projects\Laravel Projects\URLShortener\public\build\assets\app-C7Ljw2yX.css                                                     | CSS        |          1 |          0 |          1 |          2 |
+| u:\Projects\Laravel Projects\URLShortener\public\build\manifest.json                                                               | JSON       |         13 |          0 |          0 |         13 |
+| u:\Projects\Laravel Projects\URLShortener\public\index.php                                                                         | PHP        |         10 |          4 |          7 |         21 |
+| u:\Projects\Laravel Projects\URLShortener\resources\css\app.css                                                                    | CSS        |        147 |          3 |         25 |        175 |
+| u:\Projects\Laravel Projects\URLShortener\resources\js\app.js                                                                      | JavaScript |          2 |          5 |          2 |          9 |
+| u:\Projects\Laravel Projects\URLShortener\resources\js\bootstrap.js                                                                | JavaScript |          3 |          0 |          2 |          5 |
+| u:\Projects\Laravel Projects\URLShortener\resources\js\live-search.js                                                              | JavaScript |        109 |          3 |         18 |        130 |
+| u:\Projects\Laravel Projects\URLShortener\resources\views\404.blade.php                                                            | PHP        |         14 |          0 |          3 |         17 |
+| u:\Projects\Laravel Projects\URLShortener\resources\views\DailyAdminEmail.blade.php                                                | PHP        |         35 |          0 |          1 |         36 |
+| u:\Projects\Laravel Projects\URLShortener\resources\views\NewURLEmail.blade.php                                                    | PHP        |         34 |          0 |          1 |         35 |
+| u:\Projects\Laravel Projects\URLShortener\resources\views\NewUserEmail.blade.php                                                   | PHP        |         28 |          0 |          1 |         29 |
+| u:\Projects\Laravel Projects\URLShortener\resources\views\adminediturl.blade.php                                                   | PHP        |         58 |          0 |          6 |         64 |
+| u:\Projects\Laravel Projects\URLShortener\resources\views\adminpanel.blade.php                                                     | PHP        |         40 |          0 |          7 |         47 |
+| u:\Projects\Laravel Projects\URLShortener\resources\views\components\homepageLayout.blade.php                                      | PHP        |         87 |          0 |         11 |         98 |
+| u:\Projects\Laravel Projects\URLShortener\resources\views\components\initialLayout.blade.php                                       | PHP        |         76 |          0 |          7 |         83 |
+| u:\Projects\Laravel Projects\URLShortener\resources\views\components\premiumLayout.blade.php                                       | PHP        |         34 |          0 |          2 |         36 |
+| u:\Projects\Laravel Projects\URLShortener\resources\views\footerpages\about.blade.php                                              | PHP        |         16 |          0 |          2 |         18 |
+| u:\Projects\Laravel Projects\URLShortener\resources\views\footerpages\contact.blade.php                                            | PHP        |         37 |          0 |          1 |         38 |
+| u:\Projects\Laravel Projects\URLShortener\resources\views\footerpages\privacy.blade.php                                            | PHP        |         17 |          0 |          2 |         19 |
+| u:\Projects\Laravel Projects\URLShortener\resources\views\footerpages\terms.blade.php                                              | PHP        |         78 |          0 |         13 |         91 |
+| u:\Projects\Laravel Projects\URLShortener\resources\views\homepage.blade.php                                                       | PHP        |         80 |          0 |          5 |         85 |
+| u:\Projects\Laravel Projects\URLShortener\resources\views\landing.blade.php                                                        | PHP        |        114 |          0 |          4 |        118 |
+| u:\Projects\Laravel Projects\URLShortener\resources\views\livewire\admin-panel-guest-table.blade.php                               | PHP        |         79 |          0 |          4 |         83 |
+| u:\Projects\Laravel Projects\URLShortener\resources\views\livewire\admin-panel-u-r-l-table.blade.php                               | PHP        |         87 |          0 |          4 |         91 |
+| u:\Projects\Laravel Projects\URLShortener\resources\views\livewire\admin-users-table.blade.php                                     | PHP        |         84 |          0 |          3 |         87 |
+| u:\Projects\Laravel Projects\URLShortener\resources\views\livewire\search.blade.php                                                | PHP        |         53 |          0 |          6 |         59 |
+| u:\Projects\Laravel Projects\URLShortener\resources\views\livewire\summary-stats.blade.php                                         | PHP        |         15 |          0 |          1 |         16 |
+| u:\Projects\Laravel Projects\URLShortener\resources\views\login.blade.php                                                          | PHP        |         33 |          0 |          1 |         34 |
+| u:\Projects\Laravel Projects\URLShortener\resources\views\mainProfile.blade.php                                                    | PHP        |         94 |          0 |          5 |         99 |
+| u:\Projects\Laravel Projects\URLShortener\resources\views\manage-avatar-form.blade.php                                             | PHP        |         26 |          0 |          1 |         27 |
+| u:\Projects\Laravel Projects\URLShortener\resources\views\premiumwelc.blade.php                                                    | PHP        |         91 |          0 |          2 |         93 |
+| u:\Projects\Laravel Projects\URLShortener\resources\views\welcome.blade.php                                                        | PHP        |        270 |          0 |          8 |        278 |
+| u:\Projects\Laravel Projects\URLShortener\routes\api.php                                                                           | PHP        |         12 |          0 |          3 |         15 |
+| u:\Projects\Laravel Projects\URLShortener\routes\console.php                                                                       | PHP        |         18 |          0 |          3 |         21 |
+| u:\Projects\Laravel Projects\URLShortener\routes\web.php                                                                           | PHP        |         68 |         36 |         15 |        119 |
+| u:\Projects\Laravel Projects\URLShortener\tests\Feature\ExampleTest.php                                                            | PHP        |         11 |          4 |          5 |         20 |
+| u:\Projects\Laravel Projects\URLShortener\tests\TestCase.php                                                                       | PHP        |          6 |          1 |          4 |         11 |
+| u:\Projects\Laravel Projects\URLShortener\tests\Unit\ExampleTest.php                                                               | PHP        |         10 |          3 |          4 |         17 |
+| u:\Projects\Laravel Projects\URLShortener\vite.config.js                                                                           | JavaScript |         12 |          0 |          2 |         14 |
+| Total                                                                                                                              |            |     14,633 |      1,183 |        715 |     16,531 |
++------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

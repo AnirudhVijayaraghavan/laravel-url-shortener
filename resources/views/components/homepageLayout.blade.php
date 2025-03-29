@@ -1,7 +1,7 @@
 <x-initialLayout>
     <!-- Main Content -->
-    <a href="#" class="text-white mr-2 header-search-icon" title="Search" data-toggle="tooltip"
-            data-placement="top"><i class="fas fa-search"></i></a>
+    <a href="#" class="text-white mr-2 header-search-icon" title="Search" data-toggle="tooltip" data-placement="top"><i
+            class="fas fa-search"></i></a>
     <main class="flex-grow container mx-auto px-4 py-10">
         <!-- URL Shortener Form -->
         <div class="bg-white shadow rounded-lg p-6 mb-10">
@@ -55,8 +55,8 @@
                     <!-- Enable Click Counter -->
                     <div class="flex items-center">
                         <input type="hidden" name="enable_click_count" value="0">
-                        <input type="checkbox" id="enable_click_count" name="enable_click_count" value="1" class="mr-2"
-                            {{ old('enable_click_count') == '1' ? 'checked' : '' }}>
+                        <input type="checkbox" id="enable_click_count" name="enable_click_count" value="1"
+                            class="mr-2" {{ old('enable_click_count') == '1' ? 'checked' : '' }}>
                         <label for="enable_click_count" class="text-gray-700">
                             Enable click counter
                         </label>
@@ -90,8 +90,8 @@
                 @endif
             </h2>
         </div>
-        
-        {{$slot}}
-        
+
+        {{ $slot }}
+
     </main>
 </x-initialLayout>

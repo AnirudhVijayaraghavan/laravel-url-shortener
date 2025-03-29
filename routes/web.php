@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\InitialController;
 use App\Http\Controllers\PremiumController;
 use App\Http\Controllers\ProfileController;
@@ -10,8 +11,41 @@ Route::get('/default', function () {
     return view('welcome');
 });
 
+// Footer Links - about, privacy policy, terms of service, contact.
+Route::get('/about', function () {
+    return view('footerpages.about');
+});
+Route::get('/contact', function () {
+    return view('footerpages.contact');
+});
+Route::get('/privacy', function () {
+    return view('footerpages.privacy');
+});
+Route::get('/terms', function () {
+    return view('footerpages.terms');
+});
 
-// ProfileController - handles avatar, password, email, 
+// AdminController - handles /siteadmin functions
+// Admin only routes (uses Gates, refer to AppServiceProvier.php)
+Route::get('/siteadmin', function () {
+    if (Gate::allows('visitAdminPages')) {
+        return view('adminpanel');
+    }
+    return back()->with('failure', 'You are not authorized.');
+})->middleware('mustBeLoggedIn')->name('siteadmin');
+Route::get('/siteadmin/{urlID}/edit', [AdminController::class, "showEditURLPage"])->middleware('mustBeLoggedIn');
+Route::delete('/siteadmin/{urlID}/delete/guest', [AdminController::class, "adminDeleteURLGuest"])->middleware('mustBeLoggedIn');
+Route::delete('/siteadmin/{urlID}/delete', [AdminController::class, "adminDeleteURL"])->middleware('mustBeLoggedIn');
+Route::put('/siteadmin/{urlID}/edit', [AdminController::class, "editPages"])->middleware('mustBeLoggedIn');
+Route::get('/siteadmin/users', function () {
+    if (Gate::allows('visitAdminPages')) {
+        return view('adminpanel');
+    }
+    return back()->with('failure', 'You are not authorized.');
+})->middleware('mustBeLoggedIn')->name('siteadmin');
+Route::delete('/siteadmin/{userID}/users/delete', [AdminController::class, "adminDeleteUser"])->middleware('mustBeLoggedIn');
+
+// ProfileController - handles avatar, password, email,
 // username updates.
 Route::put('/profile/{user:username}/manage-avatar', [ProfileController::class, "uploadNewAvatarImage"])->middleware('mustBeLoggedIn');
 Route::get('/profile/{user:username}/manage-avatar', [ProfileController::class, "loadManageAvatarPage"])->middleware('mustBeLoggedIn');
@@ -19,6 +53,7 @@ Route::put('/profile/{user:username}/update-password', [ProfileController::class
 Route::put('/profile/{user:username}/update-username', [ProfileController::class, "updateUsername"])->middleware('mustBeLoggedIn');
 Route::put('/profile/{user:username}/update-email', [ProfileController::class, "updateEmail"])->middleware('mustBeLoggedIn');
 Route::get('/profile/{user:username}', [ProfileController::class, "loadProfilePage"])->middleware('mustBeLoggedIn');
+
 
 // PremiumController routes - handles subscribing, unsubscribing,
 // loading the premium page.
@@ -29,7 +64,7 @@ Route::get('/premium', [PremiumController::class, "loadPremiumWelcomePage"])->mi
 
 // urlController routes - handles redirection, 
 // shorten API link in homepage, loads homepage of the user.
-Route::get('/homepage/search/{term}',[urlController::class, "search"]);
+Route::get('/homepage/search/{term}', [urlController::class, "search"]);
 Route::get('/g/{guestshortURL}', [urlController::class, "redirectGuestShortURL"]);
 Route::post('/shortenguest', [urlController::class, "shortenGuestURL"])->middleware('guest');
 Route::get('/a/{shortURL}', [urlController::class, "redirectShortURL"]);
@@ -56,15 +91,8 @@ Route::get('/4044', function () {
 Route::fallback(function () {
     return view('404'); // or return view('errors.404');
 })->name('fallback');
-// Admin only routes (uses Gates, refer to AppServiceProvier.php)
-Route::get('/siteadmin', function () {
-    if (Gate::allows('visitAdminPages')) {
-        return view('adminpanel');
-    }
-    return back()->with('failure', 'You are not authorized.');
-})->middleware('mustBeLoggedIn')->name('siteadmin');
 
-// 
+
 // Things to do : 
 // - login - DONE
 // - signup / register - DONE
